@@ -40,9 +40,9 @@ class Clock {
 
   setTicks() {
     for (var i = 0; i < 60; i++) {
-      let deg = i * 6;
-      var verticalLine = "\u2575";
-      var tick = document.createElement("span");
+      const deg = i * 6;
+      const verticalLine = "\u2575";
+      const tick = document.createElement("span");
       tick.appendChild(document.createTextNode("'"));
       tick.classList.add("tick");
       clock.appendChild(tick);
