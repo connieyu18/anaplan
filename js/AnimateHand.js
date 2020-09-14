@@ -51,7 +51,6 @@ class AnimateHand {
 
     if (Math.floor(this.animateUnit) === this.endUnit) {
       // target reached, disable timer
-      console.log("animation stopped");
       clearInterval(this.animationTimer);
       this.animationTimer = null;
       this.animateUnit = this.endUnit;
@@ -65,6 +64,6 @@ class AnimateHand {
   // updates the hand on screen
   draw() {
     let ratio = this.animateUnit / this.totalUnits;
-    this.element.style.setProperty("--rotation", ratio * 360);
+    this.element.style.transform = `rotate(${ratio * 360}deg)`;
   }
 }

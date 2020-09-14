@@ -28,13 +28,26 @@ class Clock {
   }
 
   setNumbers() {
-    let radius = 45;
+    let radius = 41;
     for (var i = 0; i < 12; i++) {
       let deg = i * 30 - 60;
       //covert degree to radian
       let x = Math.cos((deg * Math.PI) / 180) * radius;
       let y = Math.sin((deg * Math.PI) / 180) * radius;
       number[i].style.transform = `translate(${x}%,${y}%)`;
+    }
+  }
+
+  setTicks() {
+    for (var i = 0; i < 60; i++) {
+      let deg = i * 6;
+      var verticalLine = "\u2575";
+      var tick = document.createElement("span");
+      tick.appendChild(document.createTextNode("'"));
+      tick.classList.add("tick");
+      clock.appendChild(tick);
+      tick.style.transform = `rotate(${deg}deg)`;
+      i % 5 === 0 ? (tick.textContent = verticalLine) : "";
     }
   }
 
@@ -52,5 +65,6 @@ class Clock {
     setInterval(() => self.showTime(), this.updateInterval);
     this.showTime();
     this.showDate();
+    this.setTicks();
   }
 }

@@ -6,8 +6,12 @@ const month = document.querySelector(".month");
 const day = document.querySelector(".day");
 const year = document.querySelector(".year");
 const backgroundImage = document.querySelector(".container");
-
+const clock = document.querySelector(".clock-wrapper");
 const imageCanvas = document.querySelector(".background-img");
+const ticks = document.querySelectorAll(".tick");
+
+const clockInstance = new Clock();
+window.onload = clockInstance.start();
 
 {
   // set canvas dpi
@@ -24,30 +28,10 @@ const imageCanvas = document.querySelector(".background-img");
   imageCanvas.setAttribute("width", style_width * dpi);
 }
 
-const clock = new Clock();
-window.onload = clock.start();
-
-// const setBackgroundImage = () => {
-//   const setImg = () => {
-//     backgroundImage.attr.src = "https://source.unsplash.com/random/";
-//   };
-//   setInterval(() => setImg(), 1000);
-// };
-
-// setBackgroundImage();
-
-// control the auto refresh rate -> 1000 = 1 second
+// control the auto refresh rate -> 1000 = 1 second`
 var refreshRate = 5000; // 10 seconds
 
-let refreshFunc = function () {
-  //backgroundImage.style.backgroundImage =
-  //  "url(https://source.unsplash.com/random/)";
-
-  // window.location.reload();
-
-  // create new image object every iteration to force url reload
-  //testImage.src = "https://source.unsplash.com/random/#" + new Date().getTime();
-
+let refreshFunc = () => {
   let imageObject = new Image();
   imageObject.onload = () => {
     // draw to canvas
@@ -69,10 +53,3 @@ refreshFunc();
 
 // Automatically reload the browser
 setInterval(refreshFunc, refreshRate);
-
-// Hide the images on load
-// backgroundImage.style.display = "none";
-
-// Get a random image from Unsplash and fade it in on load
-//backgroundImage.style.backgroundImage =
-//  "url(https://source.unsplash.com/random/)";
